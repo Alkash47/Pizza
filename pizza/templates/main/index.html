@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Лента записей</h1>
+  {% for pizza in pizza_list %}
+    <article>
+      <h2>{{ pizza.title }}</h2>
+      <p>{{ pizza.description }}</p>
+    </article>
+  {% endfor %}
+</body>
+</html>
