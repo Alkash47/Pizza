@@ -1,0 +1,29 @@
+{% load static %}
+
+<div class="product-card">
+    <div class="card-img">
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+        {% else %}
+            <img src="{% static 'img/default.jpg' %}" alt="{{ item.title }}">
+        {% endif %}
+    </div>
+
+    <div class="card-content">
+        <div class="card-title">{{ item.title }}</div>
+
+        <div class="card-desc">
+            {{ item.description|truncatewords:10 }}
+        </div>
+
+        <div class="price">
+            от {{ item.price }} ₽
+        </div>
+
+        {% if item_type == 'pizza' %}
+            <a href="{% url 'main:pizza_detail' item.pk %}" class="order-btn">Подробнее</a>
+        {% endif %}
+
+        <a href="{% url 'main:add_to_cart' item_type item.id %}" class="order-btn">В корзину</a>
+    </div>
+</div>
