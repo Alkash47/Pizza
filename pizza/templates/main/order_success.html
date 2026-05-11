@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order accepted - Pizza</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% include 'includes/critical_css.html' %}
+</head>
+<body>
+    <div class="container">
+        <main class="page">
+            <section class="panel success-panel">
+                <h1 class="page-title">Order #{{ order.id }} accepted</h1>
+                <p>We saved the order and will contact {{ order.customer_name }} by phone: {{ order.phone }}.</p>
+                <p>Delivery address: {{ order.address }}</p>
+
+                <div class="order-summary">
+                    {% for item in order.items.all %}
+                        <div class="summary-row">
+                            <span>{{ item.title }} x {{ item.quantity }}</span>
+                            <strong>{{ item.total_price }} rub.</strong>
+                        </div>
+                    {% endfor %}
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <strong>{{ order.total_price }} rub.</strong>
+                    </div>
+                </div>
+
+                <a href="{% url 'main:index' %}" class="primary-btn">Back to menu</a>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

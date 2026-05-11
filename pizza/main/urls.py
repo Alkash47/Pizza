@@ -7,6 +7,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('pizzas/<int:pk>/', views.PizzaDetailView.as_view(), name='pizza_detail'),
     path('cart/', views.cart_view, name='cart'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('orders/<int:order_id>/success/', views.order_success, name='order_success'),
 
     path('add/<str:item_type>/<int:item_id>/', views.add_to_cart, name='add_to_cart'),
     path('decrease/<str:item_type>/<int:item_id>/', views.decrease_item, name='decrease_item'),
